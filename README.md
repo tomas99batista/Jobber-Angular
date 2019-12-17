@@ -1,27 +1,75 @@
-# JobberAngular
+# Jobber
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+Tecnologias e Programação Web - Universidade de Aveiro 2019/20
 
-## Development server
+Jobber é um website para procurar e publicar ofertas de emprego.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Tomás Batista | 89296
+- João Dias | 89236
+- Flávia Figueiredo | 88886 
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Website
+### Deployment:
+O nosso website foi deployed no [Heroku](https://jobber-angular.herokuapp.com/)
 
-## Build
+### Funções disponíveis:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+> Login e Registo
 
-## Running unit tests
+> Visualizar, Inserir Detalhes e Atualizar Perfil Utilizador
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> Publicar ofertas de emprego (Necessita estar registado e loggado como empresa)
 
-## Running end-to-end tests
+> É possível ver todas as ofertas de emprego disponíveis no website
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+> Procurar ofertas de emprego (Necessita Login), filtrando por:
 
-## Further help
+> - Título da oferta (Keyword, ex: "Frontend")   
+> - Setor da oferta (Finanças, Software Dev, Arts, etc)
+> - Localidade (Cidade da oferta de emprego)    
+> - Empresa que publicou oferta  
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### User Teste
+- **Email:** teste@teste.com
+- **Password:** 12345
+
+# API
+
+API foi deployed no pythonanywhere: [Python Anywhere](http://tomas99batista.pythonanywhere.com/)
+
+|URL |REQUEST|TYPE|DATA |  
+|-|-|-|-|
+|*/*|API List | **GET** |Lista com todos os endpoints possíveis
+|*/emprego/*|Empregos | **GET, POST** |{title, description, created_at, empresa_fk, location, job_sector}
+|*/utilizador/*|Utilizadores | **GET, POST** |{first_name, last_name, b_date, email, password, phone, city, website, sector}
+|*/empresa/*|Empresas | **GET, POST** |{company_name, email, password, phone, city, website, job_sector}
+|*/emprego/{id}/*|Emprego por id| **GET, PUT** |{title, description, created_at, empresa_fk, location, job_sector}
+|*/utilizador/{id}/*|Utilizador por id | **GET, PUT** |{first_name, last_name, b_date, email, password, phone, city, website, sector}
+|*/empresa/{id}/*|Empresa por id | **GET, PUT** |{company_name, email, password, phone, city, website, job_sector}
+|*/auth/login_user/*|Login User | **POST** |{email, password}
+|*/auth/register_user/*|Regist User | **POST** |{first_name, last_name, b_date, email, password, phone, city, website, sector}
+|*/auth/login_empresa/*|Login empresa | **POST** |{email, password}
+|*/auth/register_empresa/*|Regist Empresa | **POST** |{company_name, email, password, phone, city, website, job_sector}
+
+# Nota
+- Caso o Heroku e o PythonAnywhere não funcionem por motivos alheios a nós, incluímos também os ficheiros para a Rest API e para o projeto Angular para poderem ser corridos localmente.
+
+- **Install REST API**
+
+ `$ virtualenv -p python3 venv`
+
+ `$ source ./venv/bin/activate`
+
+`$ pip3 install -r requirements.txt`
+
+- **Run REST API**
+
+ `$ source ./venv/bin/activate`
+
+ `$ python3 manage.py runserver`
+
+- **Run Angular Website**
+
+ `$ ng serve`
