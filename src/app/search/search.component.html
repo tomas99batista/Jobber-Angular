@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/index"><b>Jobber</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/index">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/search">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/post-job">Post a Job</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Log out</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container text-center">
+  <h2 style="padding-top:20px;color:whitesmoke">{{title}}</h2>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="search-hero" style="padding:10px">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+    </div>
+    <table class="table table-striped" style="background-color: whitesmoke;">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Job Sector</th>
+        <th>Location</th>
+        <th>Company</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let job of jobs | filter:searchText" (click)="onRowClick(job)">
+        <td>{{job.title}}</td>
+        <td>{{getJobName(job.job_sector)}}</td>
+        <td>{{getJobLocation(job.location)}}</td>
+        <td>{{job.company}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
